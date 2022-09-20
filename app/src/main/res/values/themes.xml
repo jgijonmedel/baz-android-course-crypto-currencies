@@ -1,7 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.CryptoCurrencies" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/purple_700</item>
+    <style name="Theme.CryptoCurrencies" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/light_primary</item>
+        <item name="colorPrimaryVariant">@color/light_primary_variant</item>
+        <item name="colorOnPrimary">@color/light_on_primary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/light_secondary</item>
+        <item name="colorSecondaryVariant">@color/light_secondary_variant</item>
+        <item name="colorOnSecondary">@color/light_on_secondary</item>
+        <!-- background color. -->
+        <item name="backgroundColor">@color/light_background</item>
+        <item name="android:windowBackground">?attr/backgroundColor</item>
+        <!-- surface color-->
+        <item name="colorSurface">@color/light_surface</item>
+        <!--
+        <item name="colorOnSurface">@color/light_loading</item>
+        -->
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/backgroundColor</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <!-- Customize your theme here. -->
+        <item name="android:navigationBarColor">?attr/backgroundColor</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
     </style>
+
+    <style name="text_header" parent="@style/TextAppearance.AppCompat">
+        <item name="android:textColor">?colorOnPrimary</item>
+        <item name="android:textSize">@dimen/text_header</item>
+    </style>
+
+    <style name="text_title" parent="@style/TextAppearance.AppCompat">
+        <item name="android:textColor">?colorOnPrimary</item>
+        <item name="android:textSize">@dimen/text_title</item>
+    </style>
+
+    <style name="text_subtitle" parent="@style/TextAppearance.AppCompat">
+        <item name="android:textColor">?colorOnPrimary</item>
+        <item name="android:textSize">@dimen/text_subtitle</item>
+    </style>
+
+    <style name="text_body" parent="@style/TextAppearance.AppCompat">
+        <item name="android:textColor">?colorOnSecondary</item>
+        <item name="android:textSize">@dimen/text_body</item>
+    </style>
+
+    <style name="text_caption" parent="@style/TextAppearance.AppCompat">
+        <item name="android:textColor">?colorOnSecondary</item>
+        <item name="android:textSize">@dimen/text_caption</item>
+    </style>
+
 </resources>
+

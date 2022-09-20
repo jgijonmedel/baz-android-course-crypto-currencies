@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- emphasis dimensions -->
+    <item name="emphasis_high" type="dimen" format="float">0.75</item>
+    <item name="emphasis_medium" type="dimen" format="float">0.5</item>
+    <item name="emphasis_low" type="dimen" format="float">0.25</item>
+
+    <!-- Spacing dimensions -->
+    <dimen name="spacing_extra_small">@dimen/_2sdp</dimen>
+    <dimen name="spacing_small">@dimen/_5sdp</dimen>
+    <dimen name="spacing_medium">@dimen/_15sdp</dimen>
+    <dimen name="spacing_long">@dimen/_25sdp</dimen>
+
+    <!-- Text dimensions. -->
+    <dimen name="text_header">@dimen/_22ssp</dimen>
+    <dimen name="text_title">@dimen/_16ssp</dimen>
+    <dimen name="text_subtitle">@dimen/_13ssp</dimen>
+    <dimen name="text_body">@dimen/_11ssp</dimen>
+    <dimen name="text_caption">@dimen/_9ssp</dimen>
+
+    <!-- edit text dimensions -->
+    <dimen name="edit_text_horizontal_padding">@dimen/_10sdp</dimen>
+    <dimen name="edit_text_vertical_padding">@dimen/_8sdp</dimen>
+
+    <!-- tools -->
+    <dimen name="size_image_cryptocurrency">@dimen/_100sdp</dimen>
+
+    <!-- separator size -->
+    <dimen name="separator_size">@dimen/_3sdp</dimen>
+
+</resources>
