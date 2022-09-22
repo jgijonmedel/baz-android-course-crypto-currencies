@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/spacing_small">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icon_loading"
+        android:layout_width="@dimen/size_image_cryptocurrency"
+        android:layout_height="@dimen/size_image_cryptocurrency"
+        android:layout_marginBottom="@dimen/spacing_small"
+        android:src="@drawable/ic_error_icon" />
+
+</LinearLayout>
