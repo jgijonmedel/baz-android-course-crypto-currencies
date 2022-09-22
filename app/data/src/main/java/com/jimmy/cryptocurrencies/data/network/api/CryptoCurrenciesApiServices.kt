@@ -15,6 +15,7 @@ internal interface CryptoCurrenciesApiServices {
     @GET(CryptoCurrenciesApiPaths.PATH_ORDER_BOOKS)
     suspend fun getOrderBook(
         @Query("book") book: String,
+        @Query("aggregate") aggregate: Boolean = true,
     ): BaseResponseModel<OrderBookResponseModel>
 
     @GET(CryptoCurrenciesApiPaths.PATH_TICKER)
