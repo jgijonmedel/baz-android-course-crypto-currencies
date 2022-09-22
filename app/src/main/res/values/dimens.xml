@@ -23,7 +23,7 @@
     <dimen name="edit_text_vertical_padding">@dimen/_8sdp</dimen>
 
     <!-- tools -->
-    <dimen name="size_image_cryptocurrency">@dimen/_80sdp</dimen>
+    <dimen name="size_image_cryptocurrency">@dimen/_70sdp</dimen>
 
     <!-- separator size -->
     <dimen name="separator_size">@dimen/_4sdp</dimen>
