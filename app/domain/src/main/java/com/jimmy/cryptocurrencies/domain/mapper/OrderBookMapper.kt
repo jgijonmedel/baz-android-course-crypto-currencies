@@ -7,8 +7,9 @@ import com.jimmy.cryptocurrencies.domain.model.orderBook.OrderBookDomainModel
 import com.jimmy.cryptocurrencies.domain.utils.UrlImage
 
 fun OrderBookResponseModel.toDomainModel(bookSymbol: String): OrderBookDomainModel {
+    val symbol = bookSymbol.split("_").first()
     return OrderBookDomainModel(
-        urlIcon = UrlImage.getUrl(bookSymbol),
+        urlIcon = UrlImage.getUrl(bookSymbol = symbol, isWithColor = true),
         updatedAt = updatedAt,
         sequence = sequence,
         asks = asks.toDomainModel().toList(),
