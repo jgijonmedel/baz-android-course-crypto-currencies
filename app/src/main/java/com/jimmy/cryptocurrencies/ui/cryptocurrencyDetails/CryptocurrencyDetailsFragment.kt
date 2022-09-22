@@ -11,6 +11,7 @@ import com.jimmy.cryptocurrencies.utils.extension.finishLoading
 import com.jimmy.cryptocurrencies.utils.extension.toAmountFormat
 import com.jimmy.cryptocurrencies.R
 import com.jimmy.cryptocurrencies.utils.extension.loadImage
+import com.jimmy.cryptocurrencies.utils.extension.toDateFormat
 
 class CryptocurrencyDetailsFragment : Fragment(R.layout.fragment_cryptocurrency_details) {
 
@@ -31,7 +32,9 @@ class CryptocurrencyDetailsFragment : Fragment(R.layout.fragment_cryptocurrency_
         arguments?.let {
             val book = it.getString(PARAM_BOOK) ?: ""
             binding.name.text = it.getString(PARAM_NAME) ?: ""
-            binding.price.text = it.getDouble(PARAM_PRICE).toAmountFormat()
+            val price = it.getDouble(PARAM_PRICE).toAmountFormat()
+            val currency = book.split("_").first()
+            binding.price.text = price.plus(currency).takeIf { price.isNotEmpty() }
 
             if (book.isNotEmpty()) {
                 viewModel.getOrderBook(book)
@@ -49,7 +52,7 @@ class CryptocurrencyDetailsFragment : Fragment(R.layout.fragment_cryptocurrency_
 
     private fun initObservers() {
         viewModel.orderBook.observe(viewLifecycleOwner) {
-            binding.tvUpdateAt.text = it.updatedAt
+            binding.tvUpdateAt.text = it.updatedAt.toDateFormat()
             binding.tvCryptoImage.loadImage(it.urlIcon)
             val isAsk = binding.rbAsks.isChecked
             setList(isAsk)
