@@ -16,6 +16,6 @@ internal interface AvailableBookDao {
     suspend fun insertAll(books: List<AvailableBookEntity>)
 
     @Query("DELETE FROM available_book_table")
-    fun deleteAllMovies()
+    fun deleteAll()
 
 }

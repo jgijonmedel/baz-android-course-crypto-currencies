@@ -34,8 +34,8 @@ class CryptocurrencyDetailsFragment : Fragment(R.layout.fragment_cryptocurrency_
             val book = it.getString(PARAM_BOOK) ?: ""
             binding.name.text = it.getString(PARAM_NAME) ?: ""
             val price = it.getDouble(PARAM_PRICE).toAmountFormat()
-            val currency = book.split("_").first()
-            binding.price.text = price.plus(currency).takeIf { price.isNotEmpty() }
+            val currency = book.split("_").last().uppercase()
+            binding.price.text = price.plus(" $currency").takeIf { price.isNotEmpty() }
 
             if (book.isNotEmpty()) {
                 viewModel.getOrderBook(book)

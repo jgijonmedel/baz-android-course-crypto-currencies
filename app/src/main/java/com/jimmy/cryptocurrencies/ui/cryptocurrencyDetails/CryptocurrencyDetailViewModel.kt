@@ -1,10 +1,7 @@
 package com.jimmy.cryptocurrencies.ui.cryptocurrencyDetails
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.jimmy.cryptocurrencies.common.core.Response
 import com.jimmy.cryptocurrencies.domain.usecase.GetOrderBook
 import com.jimmy.cryptocurrencies.mapper.toUiModel
@@ -15,11 +12,8 @@ import kotlinx.coroutines.launch
 
 class CryptocurrencyDetailViewModel: ViewModel() {
 
-    private val _orderBook: MutableLiveData<OrderBookUiModel> by lazy {
-        MutableLiveData()
-    }
-
-    val orderBook: LiveData<OrderBookUiModel> get() = _orderBook
+    private val _orderBook = MutableLiveData<OrderBookUiModel>()
+    val orderBook: LiveData<OrderBookUiModel> = _orderBook
 
     fun getOrderBook(bookSymbol: String) {
         val getOrderBook = GetOrderBook()

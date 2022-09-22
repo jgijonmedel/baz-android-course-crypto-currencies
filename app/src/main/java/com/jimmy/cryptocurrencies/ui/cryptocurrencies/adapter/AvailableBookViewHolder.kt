@@ -24,7 +24,7 @@ class AvailableBookViewHolder(
         binding.symbol.text = item.symbol.uppercase()
         binding.currency.text = item.currency.uppercase()
         binding.price.text = item.maximumPrice.toAmountFormat()
-        binding.percentageDifference.text = item.minimumValue.toString()
+        binding.percentageDifference.text = item.maximumValue.toString()
         binding.image.loadImage(item.urlIcon)
         binding.card.setOnClickListener { onClick(item) }
     }
