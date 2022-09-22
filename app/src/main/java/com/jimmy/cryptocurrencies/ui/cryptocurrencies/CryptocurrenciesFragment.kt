@@ -3,13 +3,16 @@ package com.jimmy.cryptocurrencies.ui.cryptocurrencies
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.core.widget.doAfterTextChanged
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jimmy.cryptocurrencies.R
 import com.jimmy.cryptocurrencies.databinding.FragmentCryptocurrenciesBinding
 import com.jimmy.cryptocurrencies.model.AvailableBookUiModel
 import com.jimmy.cryptocurrencies.ui.cryptocurrencies.adapter.CryptocurrencyAdapter
+import com.jimmy.cryptocurrencies.ui.details.CryptocurrencyDetailsFragment
 import com.jimmy.cryptocurrencies.utils.extension.finishLoading
 import com.jimmy.cryptocurrencies.utils.extension.startLoading
 
@@ -69,5 +72,13 @@ class CryptocurrenciesFragment : Fragment(R.layout.fragment_cryptocurrencies) {
     
     private fun cryptocurrencyOnClick(book: AvailableBookUiModel) {
         activity.startLoading()
+        findNavController().navigate(
+            R.id.action_list_to_details,
+            bundleOf(
+                CryptocurrencyDetailsFragment.PARAM_BOOK to "${book.symbol}_${book.currency}",
+                CryptocurrencyDetailsFragment.PARAM_NAME to book.name,
+                CryptocurrencyDetailsFragment.PARAM_PRICE to book.maximumPrice
+            )
+        )
     }
 }

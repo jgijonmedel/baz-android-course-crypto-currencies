@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/cryptocurrenciesFragment">
+
+    <fragment
+        android:id="@+id/cryptocurrenciesFragment"
+        android:name="com.jimmy.cryptocurrencies.ui.cryptocurrencies.CryptocurrenciesFragment"
+        android:label="fragment_cryptocurrencies"
+        tools:layout="@layout/fragment_cryptocurrencies" >
+        <action
+            android:id="@+id/action_list_to_details"
+            app:destination="@id/cryptocurrencyDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cryptocurrencyDetailsFragment"
+        android:name="com.jimmy.cryptocurrencies.ui.details.CryptocurrencyDetailsFragment"
+        android:label="fragment_cryptocurrency_details"
+        tools:layout="@layout/fragment_cryptocurrency_details" />
+</navigation>
