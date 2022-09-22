@@ -23,9 +23,11 @@
     <dimen name="edit_text_vertical_padding">@dimen/_8sdp</dimen>
 
     <!-- tools -->
-    <dimen name="size_image_cryptocurrency">@dimen/_100sdp</dimen>
+    <dimen name="size_image_cryptocurrency">@dimen/_80sdp</dimen>
 
     <!-- separator size -->
-    <dimen name="separator_size">@dimen/_3sdp</dimen>
+    <dimen name="separator_size">@dimen/_4sdp</dimen>
+
+    <dimen name="radio_button_height">@dimen/_30sdp</dimen>
 
 </resources>

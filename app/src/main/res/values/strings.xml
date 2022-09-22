@@ -1,6 +1,12 @@
 <resources>
     <string name="app_name">Crypto</string>
     <string name="toolbar_title">rypto</string>
-    <string name="count_list">%d elementos</string>
+    <string name="count_list">(%d)</string>
     <string name="label_result">Resultado</string>
+    <string name="label_last_update">Última actualización:</string>
+    <string name="label_asks">Oferta</string>
+    <string name="label_bids">Demanda</string>
+    <string name="label_book">Libro</string>
+    <string name="label_amount">Cantidad</string>
+    <string name="label_price">Precio</string>
 </resources>
