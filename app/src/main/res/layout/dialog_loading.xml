@@ -6,11 +6,11 @@
     android:orientation="vertical"
     android:padding="@dimen/spacing_small">
 
-    <androidx.appcompat.widget.AppCompatImageView
+    <ProgressBar
         android:id="@+id/icon_loading"
         android:layout_width="@dimen/size_image_cryptocurrency"
         android:layout_height="@dimen/size_image_cryptocurrency"
-        android:layout_marginBottom="@dimen/spacing_small"
-        android:src="@drawable/ic_error_icon" />
+        android:indeterminateDrawable="@drawable/ic_loading"
+        android:layout_marginBottom="@dimen/spacing_medium" />
 
 </LinearLayout>

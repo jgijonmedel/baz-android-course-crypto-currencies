@@ -8,7 +8,6 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentManager
 import com.jimmy.cryptocurrencies.R
 import com.jimmy.cryptocurrencies.databinding.DialogLoadingBinding
-import com.jimmy.cryptocurrencies.utils.extension.initAnimation
 
 class LoadingDialog : DialogFragment(R.layout.dialog_loading) {
 
@@ -23,7 +22,6 @@ class LoadingDialog : DialogFragment(R.layout.dialog_loading) {
     private fun initUI() {
         isCancelable = false
         dialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        binding.iconLoading.initAnimation(R.anim.loading_rotate)
     }
 
     fun start(manager: FragmentManager, tag: String) {
