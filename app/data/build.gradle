@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -33,6 +34,7 @@ dependencies {
     implementation project(path: ':app:common')
 
     def retrofit_version = "2.9.0"
+    def room_version = "2.4.3"
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
@@ -42,6 +44,10 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     // Retrofit with Moshi Converter
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    // Room
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
