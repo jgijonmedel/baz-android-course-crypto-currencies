@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.details.CryptocurrencyDetailsFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_medium"
+        android:layout_marginBottom="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:clickable="false"
+        app:cardBackgroundColor="?attr/colorSurface"
+        app:cardCornerRadius="@dimen/spacing_medium"
+        app:cardElevation="0dp"
+        app:cardPreventCornerOverlap="true"
+        app:contentPadding="@dimen/spacing_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/tv_crypto_image"
+                android:layout_width="@dimen/size_image_cryptocurrency"
+                android:layout_height="@dimen/size_image_cryptocurrency"
+                android:alpha="0.5"
+                android:src="@drawable/view_circle_separator"
+                android:tint="?attr/colorOnSecondary"
+                tools:ignore="ImageContrastCheck" />
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_medium"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:textAppearance="@style/text_subtitle"
+                    tools:text="Bitcoin" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/text_subtitle"
+                    android:textColor="?attr/colorPrimaryVariant"
+                    tools:ignore="TextContrastCheck"
+                    tools:text="$12,123,123.98 MXN" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:text="@string/label_last_update"
+                    android:textAppearance="@style/text_body"
+                    android:textColor="?attr/colorOnSecondary"
+                    tools:ignore="TextContrastCheck" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_update_at"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/text_body"
+                    tools:text="12/12/2022" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.cardview.widget.CardView>
+
+    <RadioGroup
+        android:id="@+id/rg_asks_bids"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_long"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rb_asks"
+            style="@style/radio_asks_bids"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/radio_button_height"
+            android:layout_marginEnd="@dimen/spacing_medium"
+            android:checked="true"
+            android:text="@string/label_asks"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rb_bids"
+            style="@style/radio_asks_bids"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/radio_button_height"
+            android:checked="false"
+            android:text="@string/label_bids"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+    </RadioGroup>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/header_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="@dimen/spacing_medium"
+        android:paddingHorizontal="@dimen/spacing_extra_small"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:paddingTop="@dimen/spacing_small"
+        android:alpha="@dimen/emphasis_medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rg_asks_bids">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textAppearance="@style/text_subtitle"
+            android:textColor="?attr/colorOnSecondary"
+            android:text="@string/label_book" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/amount"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_small"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textAppearance="@style/text_subtitle"
+            android:textColor="?attr/colorOnSecondary"
+            android:text="@string/label_amount" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:textAlignment="textEnd"
+            android:textAppearance="@style/text_subtitle"
+            android:textColor="?attr/colorOnSecondary"
+            android:text="@string/label_price" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <View
+        android:id="@+id/header_list_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/colorOnSecondary"
+        android:alpha="@dimen/emphasis_low"
+        app:layout_constraintTop_toBottomOf="@id/header_list"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_marginHorizontal="@dimen/spacing_medium"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_asks_bids"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_list_divider"
+        tools:itemCount="10"
+        tools:listitem="@layout/item_asks_bids" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

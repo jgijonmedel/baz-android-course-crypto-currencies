@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:backgroundTint="@android:color/transparent"
+    app:cardElevation="0dp">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginHorizontal="@dimen/spacing_extra_small"
+        android:paddingHorizontal="@dimen/spacing_medium"
+        android:paddingTop="@dimen/spacing_medium">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+           <androidx.appcompat.widget.LinearLayoutCompat
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:orientation="horizontal"
+               android:gravity="center_vertical">
+
+               <androidx.appcompat.widget.AppCompatTextView
+                   android:id="@+id/name"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textAppearance="@style/text_body"
+                   android:textColor="?attr/colorOnPrimary"
+                   tools:text="BTC" />
+
+               <View
+                   android:layout_width="@dimen/separator_size"
+                   android:layout_height="@dimen/separator_size"
+                   android:layout_marginHorizontal="@dimen/spacing_extra_small"
+                   android:background="@drawable/view_circle_separator"
+                   android:alpha="@dimen/emphasis_medium"/>
+
+               <androidx.appcompat.widget.AppCompatTextView
+                   android:id="@+id/currency"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textAppearance="@style/text_body"
+                   tools:ignore="TextContrastCheck"
+                   tools:text="MXN" />
+           </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textAppearance="@style/text_body"
+                android:textColor="?attr/colorOnPrimary"
+                android:layout_marginHorizontal="@dimen/spacing_small"
+                android:layout_weight="1"
+                tools:text="1.25976" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/price"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:textAlignment="textEnd"
+                android:textAppearance="@style/text_body"
+                android:textColor="?attr/colorOnPrimary"
+                tools:text="$152,326.06 MXN" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?attr/colorSurface"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/percentage_difference"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:layout_marginHorizontal="@dimen/spacing_medium"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.cardview.widget.CardView>
