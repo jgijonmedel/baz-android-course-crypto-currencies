@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.jimmy.cryptocurrencies.data.local.dao.AvailableBookDao
 import com.jimmy.cryptocurrencies.data.local.entity.AvailableBookEntity
 
 @Database(entities = [AvailableBookEntity::class], version = 1, exportSchema = false)
@@ -24,5 +25,7 @@ internal abstract class CryptocurrencyDataBase : RoomDatabase() {
             return dataBase!!
         }
     }
+
+    internal abstract fun getAvailableBookDao(): AvailableBookDao
 
 }
