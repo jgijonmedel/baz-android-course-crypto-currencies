@@ -4,8 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.jimmy.cryptocurrencies.data.local.entity.AvailableBookEntity
 
-@Database(entities = [], version = 1, exportSchema = false)
+@Database(entities = [AvailableBookEntity::class], version = 1, exportSchema = false)
 internal abstract class CryptocurrencyDataBase : RoomDatabase() {
 
     companion object {
