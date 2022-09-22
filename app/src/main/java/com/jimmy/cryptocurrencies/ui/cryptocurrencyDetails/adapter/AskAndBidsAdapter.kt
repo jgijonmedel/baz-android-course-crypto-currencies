@@ -1,4 +1,4 @@
-package com.jimmy.cryptocurrencies.ui.details.adapter
+package com.jimmy.cryptocurrencies.ui.cryptocurrencyDetails.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

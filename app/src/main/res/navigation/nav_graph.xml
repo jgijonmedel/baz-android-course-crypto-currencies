@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/cryptocurrencyDetailsFragment"
-        android:name="com.jimmy.cryptocurrencies.ui.details.CryptocurrencyDetailsFragment"
+        android:name="com.jimmy.cryptocurrencies.ui.cryptocurrencyDetails.CryptocurrencyDetailsFragment"
         android:label="fragment_cryptocurrency_details"
         tools:layout="@layout/fragment_cryptocurrency_details" />
 </navigation>

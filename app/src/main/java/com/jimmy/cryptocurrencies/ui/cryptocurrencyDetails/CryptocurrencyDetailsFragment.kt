@@ -1,4 +1,4 @@
-package com.jimmy.cryptocurrencies.ui.details
+package com.jimmy.cryptocurrencies.ui.cryptocurrencyDetails
 
 import android.os.Bundle
 import android.view.View
@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jimmy.cryptocurrencies.databinding.FragmentCryptocurrencyDetailsBinding
-import com.jimmy.cryptocurrencies.ui.details.adapter.AskAndBidsAdapter
+import com.jimmy.cryptocurrencies.ui.cryptocurrencyDetails.adapter.AskAndBidsAdapter
 import com.jimmy.cryptocurrencies.utils.extension.finishLoading
 import com.jimmy.cryptocurrencies.utils.extension.toAmountFormat
 import com.jimmy.cryptocurrencies.R

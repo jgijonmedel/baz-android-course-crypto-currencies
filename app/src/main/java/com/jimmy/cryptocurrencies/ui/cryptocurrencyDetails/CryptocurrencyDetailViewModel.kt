@@ -1,4 +1,4 @@
-package com.jimmy.cryptocurrencies.ui.details
+package com.jimmy.cryptocurrencies.ui.cryptocurrencyDetails
 
 import android.util.Log
 import androidx.lifecycle.LiveData

@@ -12,7 +12,7 @@ import com.jimmy.cryptocurrencies.R
 import com.jimmy.cryptocurrencies.databinding.FragmentCryptocurrenciesBinding
 import com.jimmy.cryptocurrencies.model.AvailableBookUiModel
 import com.jimmy.cryptocurrencies.ui.cryptocurrencies.adapter.CryptocurrencyAdapter
-import com.jimmy.cryptocurrencies.ui.details.CryptocurrencyDetailsFragment
+import com.jimmy.cryptocurrencies.ui.cryptocurrencyDetails.CryptocurrencyDetailsFragment
 import com.jimmy.cryptocurrencies.utils.extension.finishLoading
 import com.jimmy.cryptocurrencies.utils.extension.startLoading
 
