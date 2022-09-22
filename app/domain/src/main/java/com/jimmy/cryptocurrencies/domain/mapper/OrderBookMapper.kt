@@ -1,12 +1,12 @@
 package com.jimmy.cryptocurrencies.domain.mapper
 
-import com.jimmy.cryptocurrencies.data.network.model.response.orderBook.AsksBidsValue
-import com.jimmy.cryptocurrencies.data.network.model.response.orderBook.OrderBookResponseModel
+import com.jimmy.cryptocurrencies.data.network.model.response.orderBook.AsksBidsNetworkModelResponse
+import com.jimmy.cryptocurrencies.data.network.model.response.orderBook.OrderBookNetworkModelResponse
 import com.jimmy.cryptocurrencies.domain.model.orderBook.AsksBidsValueDomainModel
 import com.jimmy.cryptocurrencies.domain.model.orderBook.OrderBookDomainModel
 import com.jimmy.cryptocurrencies.domain.utils.UrlImage
 
-fun OrderBookResponseModel.toDomainModel(bookSymbol: String): OrderBookDomainModel {
+fun OrderBookNetworkModelResponse.toDomainModel(bookSymbol: String): OrderBookDomainModel {
     val symbol = bookSymbol.split("_").first()
     return OrderBookDomainModel(
         urlIcon = UrlImage.getUrl(bookSymbol = symbol, isWithColor = true),
@@ -17,7 +17,7 @@ fun OrderBookResponseModel.toDomainModel(bookSymbol: String): OrderBookDomainMod
     )
 }
 
-private fun AsksBidsValue.toDomainModel(): AsksBidsValueDomainModel {
+private fun AsksBidsNetworkModelResponse.toDomainModel(): AsksBidsValueDomainModel {
     return AsksBidsValueDomainModel(
         book = book,
         price = price,
@@ -25,6 +25,6 @@ private fun AsksBidsValue.toDomainModel(): AsksBidsValueDomainModel {
     )
 }
 
-private fun Collection<AsksBidsValue>.toDomainModel(): Collection<AsksBidsValueDomainModel> {
+private fun Collection<AsksBidsNetworkModelResponse>.toDomainModel(): Collection<AsksBidsValueDomainModel> {
     return map { it.toDomainModel() }
 }

@@ -2,7 +2,7 @@ package com.jimmy.cryptocurrencies.data.network.model.response.availableBooks
 
 import com.google.gson.annotations.SerializedName
 
-data class AvailableBookResponseModel (
+data class AvailableBookNetworkModelResponse (
     @SerializedName("book") val book: String,
     @SerializedName("minimum_price") val minimumPrice: String,
     @SerializedName("maximum_price") val maximumPrice: String,

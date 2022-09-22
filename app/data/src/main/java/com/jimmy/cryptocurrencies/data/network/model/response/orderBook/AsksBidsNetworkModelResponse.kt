@@ -2,7 +2,7 @@ package com.jimmy.cryptocurrencies.data.network.model.response.orderBook
 
 import com.google.gson.annotations.SerializedName
 
-data class AsksBidsValue(
+data class AsksBidsNetworkModelResponse(
     @SerializedName("book") val book: String,
     @SerializedName("price") val price: String,
     @SerializedName("amount") val amount: String,

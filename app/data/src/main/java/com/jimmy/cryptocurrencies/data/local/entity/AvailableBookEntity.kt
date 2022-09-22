@@ -9,6 +9,7 @@ import java.util.UUID
 internal data class AvailableBookEntity (
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id") val id: String = UUID.randomUUID().toString(),
+    @ColumnInfo(name = "book") val book: String,
     @ColumnInfo(name = "minimum_price") val minimumPrice: String,
     @ColumnInfo(name = "maximum_price") val maximumPrice: String,
     @ColumnInfo(name = "minimum_amount") val minimumAmount: String,
