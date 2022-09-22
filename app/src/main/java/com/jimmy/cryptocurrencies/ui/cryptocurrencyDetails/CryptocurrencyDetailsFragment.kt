@@ -3,6 +3,7 @@ package com.jimmy.cryptocurrencies.ui.cryptocurrencyDetails
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jimmy.cryptocurrencies.databinding.FragmentCryptocurrencyDetailsBinding
@@ -16,7 +17,7 @@ import com.jimmy.cryptocurrencies.utils.extension.toDateFormat
 class CryptocurrencyDetailsFragment : Fragment(R.layout.fragment_cryptocurrency_details) {
 
     private lateinit var binding: FragmentCryptocurrencyDetailsBinding
-    private val viewModel = CryptocurrencyDetailViewModel()
+    private val viewModel: CryptocurrencyDetailViewModel by viewModels()
     private lateinit var askAndBidsAdapter: AskAndBidsAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

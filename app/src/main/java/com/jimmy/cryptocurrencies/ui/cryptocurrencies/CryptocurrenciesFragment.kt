@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.core.widget.doAfterTextChanged
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -19,12 +20,13 @@ import com.jimmy.cryptocurrencies.utils.extension.startLoading
 class CryptocurrenciesFragment : Fragment(R.layout.fragment_cryptocurrencies) {
 
     private lateinit var binding: FragmentCryptocurrenciesBinding
-    private val viewModel: CryptocurrenciesViewModel by lazy { CryptocurrenciesViewModel() }
+    private val viewModel: CryptocurrenciesViewModel by viewModels()
     private lateinit var cryptocurrencyAdapter: CryptocurrencyAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentCryptocurrenciesBinding.bind(view)
+        viewModel.init(binding.root.context)
         setUpRecycler()
         initObservers()
         setUpListeners()

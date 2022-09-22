@@ -1,5 +1,6 @@
 package com.jimmy.cryptocurrencies.ui.cryptocurrencies
 
+import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,14 +14,19 @@ import kotlinx.coroutines.launch
 
 class CryptocurrenciesViewModel: ViewModel() {
 
+    private lateinit var getAllAvailableBooks: GetAllAvailableBooks
     private val _books: MutableLiveData<List<AvailableBookUiModel>> by lazy {
         MutableLiveData(emptyList())
     }
 
     val books: LiveData<List<AvailableBookUiModel>> get() = _books
 
+    fun init(context: Context) {
+        getAllAvailableBooks = GetAllAvailableBooks(context)
+
+    }
+
     fun getAvailableBooks() {
-        val getAllAvailableBooks = GetAllAvailableBooks()
         viewModelScope.launch(Dispatchers.IO) {
             when(val response = getAllAvailableBooks()) {
                 is Response.Failure -> {}
