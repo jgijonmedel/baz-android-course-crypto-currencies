@@ -8,23 +8,23 @@ import java.util.concurrent.TimeUnit
 
 internal object RetrofitClient {
     private const val baseUrl = CryptoCurrenciesApiPaths.BASE_URL
+    private const val TIME_OUT_MINUTES = 1L
 
     private val loggingInterceptor = HttpLoggingInterceptor().also {
         it.level = HttpLoggingInterceptor.Level.BODY
     }
 
     private val okHttpClient = OkHttpClient.Builder()
-        .readTimeout(60, TimeUnit.SECONDS)
-        .connectTimeout(60, TimeUnit.SECONDS)
+        .readTimeout(TIME_OUT_MINUTES, TimeUnit.MINUTES)
+        .connectTimeout(TIME_OUT_MINUTES, TimeUnit.MINUTES)
         .addInterceptor(loggingInterceptor)
-
         .build()
     
     private fun getRetrofit(): Retrofit {
         return  Retrofit.Builder()
             .baseUrl(baseUrl)
-            .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
             .build()
     }
 

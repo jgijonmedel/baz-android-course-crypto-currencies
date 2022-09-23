@@ -1,11 +1,11 @@
 package com.jimmy.cryptocurrencies.domain.mapper
 
-import com.jimmy.cryptocurrencies.data.network.model.response.availableBooks.AvailableBookNetworkModelResponse
+import com.jimmy.cryptocurrencies.data.repository.model.AvailableBookDataModel
 import com.jimmy.cryptocurrencies.domain.constants.CryptocurrencyDirectory
 import com.jimmy.cryptocurrencies.domain.model.availableBook.AvailableBookDomainModel
 import com.jimmy.cryptocurrencies.domain.utils.UrlImage
 
-fun AvailableBookNetworkModelResponse.toDomainModel(): AvailableBookDomainModel {
+fun AvailableBookDataModel.toDomainModel(): AvailableBookDomainModel {
     val (symbol, currency) = book.split("_")
 
     return AvailableBookDomainModel(
@@ -13,15 +13,11 @@ fun AvailableBookNetworkModelResponse.toDomainModel(): AvailableBookDomainModel 
         symbol = symbol,
         currency = currency,
         urlIcon = UrlImage.getUrl(symbol),
-        minimumPrice = minimumPrice,
         maximumPrice = maximumPrice,
-        minimumAmount = minimumAmount,
-        maximumAmount = maximumAmount,
-        minimumValue = minimumValue,
         maximumValue = maximumValue,
     )
 }
 
-fun Collection<AvailableBookNetworkModelResponse>.toDomainModel(): Collection<AvailableBookDomainModel> {
+fun List<AvailableBookDataModel>.toDomainModel(): List<AvailableBookDomainModel> {
     return map { it.toDomainModel() }
 }
