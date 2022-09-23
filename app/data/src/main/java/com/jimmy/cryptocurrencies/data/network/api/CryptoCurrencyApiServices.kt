@@ -7,7 +7,7 @@ import com.jimmy.cryptocurrencies.data.network.model.response.ticker.TickerRespo
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-internal interface CryptoCurrenciesApiServices {
+internal interface CryptoCurrencyApiServices {
 
     @GET(CryptoCurrenciesApiPaths.PATH_AVAILABLE_BOOKS)
     suspend fun getAvailableBooks(): BaseResponseModel<List<AvailableBookNetworkModelResponse>>
