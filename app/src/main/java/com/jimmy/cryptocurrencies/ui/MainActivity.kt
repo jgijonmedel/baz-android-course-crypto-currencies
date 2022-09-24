@@ -1,18 +1,20 @@
 package com.jimmy.cryptocurrencies.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.jimmy.cryptocurrencies.R
+import androidx.appcompat.app.AppCompatActivity
+import com.jimmy.cryptocurrencies.databinding.ActivityMainBinding
 import com.jimmy.cryptocurrencies.ui.componet.LoadingDialog
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
     private val dialogLoading by lazy { LoadingDialog() }
     private var isLoading: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root.rootView)
     }
 
     fun startLoading() {

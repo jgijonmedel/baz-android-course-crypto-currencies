@@ -4,12 +4,14 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jimmy.cryptocurrencies.R
+import com.jimmy.cryptocurrencies.common.utils.CryptoLog
 import com.jimmy.cryptocurrencies.databinding.FragmentCryptocurrenciesBinding
 import com.jimmy.cryptocurrencies.model.AvailableBookUiModel
 import com.jimmy.cryptocurrencies.ui.cryptocurrencies.adapter.CryptocurrencyAdapter
@@ -53,13 +55,19 @@ class CryptocurrenciesFragment : Fragment(R.layout.fragment_cryptocurrencies) {
     }
 
     private fun initObservers() {
-        viewModel.books.observe(viewLifecycleOwner) { setList(it) }
+        viewModel.books.observe(viewLifecycleOwner) {
+            CryptoLog.Ui.success("Observer")
+            setList(it)
+        }
     }
 
     private fun setList(books: List<AvailableBookUiModel>){
+        val thereAreElements = books.isEmpty()
         cryptocurrencyAdapter.setList(books)
         binding.tvCountList.text = getString(R.string.count_list, books.size)
-        if(books.isNotEmpty()) {
+        binding.messageNotFound.content.isVisible = thereAreElements
+        binding.rvCryptocurrency.isVisible = thereAreElements.not()
+        if(!thereAreElements) {
             activity.finishLoading()
         }
     }
