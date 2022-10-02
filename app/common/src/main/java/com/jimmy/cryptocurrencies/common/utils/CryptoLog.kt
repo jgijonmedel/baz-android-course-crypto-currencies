@@ -6,9 +6,9 @@ sealed class CryptoLog(private val tag: TagModule) {
 
     companion object {
         enum class TagModule(val value: String) {
-            Data(value =  "data_"),
-            DOMAIN(value =  "domain_"),
-            UI( value = "ui_")
+            Data(value =  "data"),
+            DOMAIN(value =  "domain"),
+            UI( value = "ui")
         }
     }
 
