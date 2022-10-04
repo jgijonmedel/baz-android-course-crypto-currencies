@@ -9,5 +9,5 @@ internal data class AvailableBookNetworkModelResponse (
     @SerializedName("minimum_amount") val minimumAmount: String,
     @SerializedName("maximum_amount") val maximumAmount: String,
     @SerializedName("minimum_value") val minimumValue: String,
-    @SerializedName("maximum_value") val maximumValue: String,
+    @SerializedName("maximum_value") val maximumValue: String
 )

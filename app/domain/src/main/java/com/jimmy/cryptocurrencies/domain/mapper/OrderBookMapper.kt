@@ -13,7 +13,7 @@ fun OrderBookDataModel.toDomainModel(bookSymbol: String): OrderBookDomainModel {
         updatedAt = updatedAt,
         sequence = sequence,
         asks = asks.toDomainModels().toList(),
-        bids = bids.toDomainModels().toList(),
+        bids = bids.toDomainModels().toList()
     )
 }
 
@@ -21,7 +21,7 @@ private fun AsksBidsDataModel.toDomainModel(): AsksBidsValueDomainModel {
     return AsksBidsValueDomainModel(
         book = book,
         price = price,
-        amount = amount,
+        amount = amount
     )
 }
 

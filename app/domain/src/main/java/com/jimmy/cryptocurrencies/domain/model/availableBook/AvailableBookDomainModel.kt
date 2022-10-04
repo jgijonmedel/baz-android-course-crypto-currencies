@@ -6,5 +6,5 @@ data class AvailableBookDomainModel(
     val currency: String,
     val urlIcon: String,
     val maximumPrice: String,
-    val maximumValue: String,
+    val maximumValue: String
 )

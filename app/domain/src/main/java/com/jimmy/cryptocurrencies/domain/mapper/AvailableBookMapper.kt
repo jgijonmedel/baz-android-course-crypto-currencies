@@ -14,7 +14,7 @@ fun AvailableBookDataModel.toDomainModel(): AvailableBookDomainModel {
         currency = currency,
         urlIcon = UrlImage.getUrl(symbol),
         maximumPrice = maximumPrice,
-        maximumValue = maximumValue,
+        maximumValue = maximumValue
     )
 }
 

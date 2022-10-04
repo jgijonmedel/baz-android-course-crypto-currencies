@@ -1,6 +1,6 @@
 package com.jimmy.cryptocurrencies.domain.model.orderBook
 
-data class OrderBookDomainModel (
+data class OrderBookDomainModel(
     val urlIcon: String,
     val updatedAt: String,
     val sequence: String,

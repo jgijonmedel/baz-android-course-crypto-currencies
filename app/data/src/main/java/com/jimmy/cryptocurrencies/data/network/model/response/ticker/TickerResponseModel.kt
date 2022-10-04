@@ -11,5 +11,5 @@ data class TickerResponseModel(
     @SerializedName("vwap") val vwap: String,
     @SerializedName("ask") val ask: String,
     @SerializedName("bid") val bid: String,
-    @SerializedName("created_at") val createdAt: String,
+    @SerializedName("created_at") val createdAt: String
 )

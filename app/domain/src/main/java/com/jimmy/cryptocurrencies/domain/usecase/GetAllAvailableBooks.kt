@@ -13,7 +13,7 @@ class GetAllAvailableBooks(context: Context) {
 
     suspend operator fun invoke(): Response<List<AvailableBookDomainModel>> {
         return try {
-            val repositoryResponse = repository.getAllAvailableBooks()
+            val repositoryResponse = repository.getAll()
             if(repositoryResponse.isEmpty()) throw NullPointerException("list available book is empty")
 
             val domainResponse = repositoryResponse.toDomainModel()
@@ -22,8 +22,7 @@ class GetAllAvailableBooks(context: Context) {
             Response.Success(domainResponse)
         } catch (ex: Exception) {
             CryptoLog.Domain.error(exception = ex, message =  "error")
-            Response.Failure(code = "", message = ex.message?: "")
+            Response.Failure(code = "", message = ex.message ?: "")
         }
     }
-
 }

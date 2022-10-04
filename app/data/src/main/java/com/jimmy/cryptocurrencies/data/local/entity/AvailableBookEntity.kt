@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import java.util.UUID
 
 @Entity(tableName = "available_book_table")
-internal data class AvailableBookEntity (
+internal data class AvailableBookEntity(
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "id") val id: String = UUID.randomUUID().toString(),
     @ColumnInfo(name = "book") val book: String,
@@ -15,5 +15,5 @@ internal data class AvailableBookEntity (
     @ColumnInfo(name = "minimum_amount") val minimumAmount: String,
     @ColumnInfo(name = "maximum_amount") val maximumAmount: String,
     @ColumnInfo(name = "minimum_value") val minimumValue: String,
-    @ColumnInfo(name = "maximum_value") val maximumValue: String,
+    @ColumnInfo(name = "maximum_value") val maximumValue: String
 )
