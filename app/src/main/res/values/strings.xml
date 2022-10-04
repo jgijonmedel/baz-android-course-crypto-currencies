@@ -9,4 +9,12 @@
     <string name="label_book">Libro</string>
     <string name="label_amount">Cantidad</string>
     <string name="label_price">Precio</string>
+    <string name="label_end_list_message">Hás llegado al final de la lista</string>
+    <string name="label_cancel">Cancelar</string>
+    <string name="label_accept">Aceptar</string>
+    <string name="error_title_default">!Oh, vaya¡ parece que ocurrió un error</string>
+    <string name="error_body_default_load_data">Por el momento no podemos obtener los datos.</string>
+    <string name="label_retry">Reintentar</string>
+    <string name="message_not_load_data">No se encontro el contennido</string>
+    <string name="label_reload">Volver a cargar</string>
 </resources>

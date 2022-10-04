@@ -15,6 +15,7 @@
         <item name="android:windowBackground">?attr/backgroundColor</item>
         <!-- surface color-->
         <item name="colorSurface">@color/dark_surface</item>
+        <item name="colorError">@color/dark_secondary</item>
         <!--
          <item name="colorOnSurface">@color/light_loading</item>
          -->

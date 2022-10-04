@@ -3,7 +3,7 @@ package com.jimmy.cryptocurrencies.ui.base
 import androidx.recyclerview.widget.ListAdapter
 
 abstract class BaseRecyclerAdapter<T : Any>(
-    callback: BaseDiffUtilCallback<T>,
+    callback: BaseDiffUtilCallback<T>
 ) : ListAdapter<T, BaseViewHolder<T>>(callback) {
 
     override fun onBindViewHolder(holder: BaseViewHolder<T>, position: Int) {
@@ -14,5 +14,4 @@ abstract class BaseRecyclerAdapter<T : Any>(
     fun setList(list: List<T>) {
         submitList(list)
     }
-
 }

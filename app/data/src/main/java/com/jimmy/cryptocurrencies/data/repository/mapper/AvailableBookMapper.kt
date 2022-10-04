@@ -8,7 +8,7 @@ internal fun AvailableBookEntity.toDataModel(): AvailableBookDataModel {
     return AvailableBookDataModel(
         book = book,
         maximumPrice = maximumPrice,
-        maximumValue = maximumValue,
+        maximumValue = maximumValue
     )
 }
 
@@ -21,7 +21,7 @@ internal fun AvailableBookNetworkModelResponse.toDataModel(): AvailableBookDataM
     return AvailableBookDataModel(
         book = book,
         maximumPrice = maximumPrice,
-        maximumValue = maximumValue,
+        maximumValue = maximumValue
     )
 }
 

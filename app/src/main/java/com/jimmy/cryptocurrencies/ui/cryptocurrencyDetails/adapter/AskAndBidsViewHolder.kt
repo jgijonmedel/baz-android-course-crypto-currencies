@@ -7,13 +7,13 @@ import com.jimmy.cryptocurrencies.ui.base.BaseViewHolder
 import com.jimmy.cryptocurrencies.utils.extension.toAmountFormat
 
 class AskAndBidsViewHolder(
-    view: View,
+    view: View
 ) : BaseViewHolder<AsksBidsValueUiModel>(view) {
 
     private val binding = ItemAsksBidsBinding.bind(view)
 
     override fun bind(
-        item: AsksBidsValueUiModel,
+        item: AsksBidsValueUiModel
     ) {
         binding.name.text = item.name.uppercase()
         binding.currency.text = item.currency.uppercase()
@@ -21,4 +21,3 @@ class AskAndBidsViewHolder(
         binding.amount.text = item.amount.toString()
     }
 }
-

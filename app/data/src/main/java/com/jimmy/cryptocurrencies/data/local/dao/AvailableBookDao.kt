@@ -17,5 +17,4 @@ internal interface AvailableBookDao {
 
     @Query("DELETE FROM available_book_table")
     suspend fun deleteAll()
-
 }

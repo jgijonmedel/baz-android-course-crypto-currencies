@@ -6,9 +6,9 @@ sealed class CryptoLog(private val tag: TagModule) {
 
     companion object {
         enum class TagModule(val value: String) {
-            Data(value =  "data_"),
-            DOMAIN(value =  "domain_"),
-            UI( value = "ui_")
+            Data(value = "data"),
+            DOMAIN(value = "domain"),
+            UI(value = "ui")
         }
     }
 
@@ -38,7 +38,7 @@ sealed class CryptoLog(private val tag: TagModule) {
         Log.d("Crypto_App_Success_${tag.value}", message)
     }
 
-    object Ui: CryptoLog(TagModule.UI)
-    object Data: CryptoLog(TagModule.Data)
-    object Domain: CryptoLog(TagModule.DOMAIN)
+    object Ui : CryptoLog(TagModule.UI)
+    object Data : CryptoLog(TagModule.Data)
+    object Domain : CryptoLog(TagModule.DOMAIN)
 }

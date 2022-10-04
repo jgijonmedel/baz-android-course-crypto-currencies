@@ -6,5 +6,5 @@ import com.google.gson.annotations.SerializedName
 internal data class BaseResponseModel<T>(
     @Expose @SerializedName("success") val success: Boolean,
     @Expose @SerializedName("payload") val result: T? = null,
-    @Expose @SerializedName("error") val error: ErrorResponseModel? = null,
+    @Expose @SerializedName("error") val error: ErrorResponseModel? = null
 )
