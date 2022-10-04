@@ -8,15 +8,42 @@
     android:id="@+id/content">
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="1:1"
-        android:src="@drawable/img_not_found"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="@dimen/spacing_long"
-        android:padding="@dimen/spacing_long"/>
+        android:padding="@dimen/spacing_long"
+        android:src="@drawable/img_not_found"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="@+id/appCompatTextView"
+        app:layout_constraintStart_toStartOf="@+id/appCompatTextView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/appCompatTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_long"
+        android:layout_marginTop="@dimen/spacing_extra_small"
+        android:gravity="center"
+        android:text="@string/message_not_load_data"
+        android:textAppearance="@style/text_subtitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_reload"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="?attr/colorPrimaryVariant"
+        android:text="@string/label_reload"
+        android:textAppearance="@style/text_subtitle"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:paddingHorizontal="@dimen/spacing_medium"
+        app:layout_constraintEnd_toEndOf="@+id/appCompatTextView"
+        app:layout_constraintStart_toStartOf="@+id/appCompatTextView"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

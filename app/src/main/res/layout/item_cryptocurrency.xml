@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/card"
-    android:backgroundTint="@android:color/transparent"
+    android:background="@android:color/transparent"
+    app:cardBackgroundColor="@android:color/transparent"
     app:cardElevation="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,10 +20,11 @@
             android:id="@+id/image"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:tint="?attr/colorOnSecondary"
+            android:alpha=".1"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ImageContrastCheck"
             tools:src="@drawable/view_circle_separator" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -45,6 +47,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/image"
             app:layout_constraintStart_toStartOf="@id/name"
             app:layout_constraintTop_toBottomOf="@+id/name"
+            tools:ignore="TextContrastCheck"
             tools:text="BTC" />
 
         <View
@@ -62,12 +65,13 @@
             android:id="@+id/currency"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_small"
             android:textAppearance="@style/text_caption"
             app:layout_constraintBottom_toBottomOf="@id/separator"
             app:layout_constraintEnd_toStartOf="@+id/percentage_difference"
             app:layout_constraintStart_toEndOf="@id/separator"
             app:layout_constraintTop_toTopOf="@id/separator"
-            android:layout_marginHorizontal="@dimen/spacing_small"
+            tools:ignore="TextContrastCheck"
             tools:text="MXN" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -78,7 +82,8 @@
             app:layout_constraintBottom_toBottomOf="@+id/name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/name"
-            tools:text="$152,326.06 MXN"  />
+            tools:ignore="TextContrastCheck"
+            tools:text="$152,326.06 MXN" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/percentage_difference"
@@ -89,6 +94,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/currency"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/price"
+            tools:ignore="TextContrastCheck"
             tools:text="+0.5%" />
 
         <View

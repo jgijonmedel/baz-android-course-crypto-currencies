@@ -2,27 +2,33 @@ package com.jimmy.cryptocurrencies.ui.cryptocurrencyDetails
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jimmy.cryptocurrencies.databinding.FragmentCryptocurrencyDetailsBinding
 import com.jimmy.cryptocurrencies.ui.cryptocurrencyDetails.adapter.AskAndBidsAdapter
-import com.jimmy.cryptocurrencies.utils.extension.finishLoading
-import com.jimmy.cryptocurrencies.utils.extension.toAmountFormat
 import com.jimmy.cryptocurrencies.R
-import com.jimmy.cryptocurrencies.utils.extension.loadImage
+import com.jimmy.cryptocurrencies.common.core.Response
+import com.jimmy.cryptocurrencies.common.utils.CryptoLog
+import com.jimmy.cryptocurrencies.utils.extension.toAmountFormat
 import com.jimmy.cryptocurrencies.utils.extension.toDateFormat
+import com.jimmy.cryptocurrencies.utils.extension.loadImage
+import com.jimmy.cryptocurrencies.utils.extension.finishLoading
+import com.jimmy.cryptocurrencies.utils.extension.showError
 
 class CryptocurrencyDetailsFragment : Fragment(R.layout.fragment_cryptocurrency_details) {
 
     private lateinit var binding: FragmentCryptocurrencyDetailsBinding
     private val viewModel: CryptocurrencyDetailViewModel by viewModels()
     private lateinit var askAndBidsAdapter: AskAndBidsAdapter
+    private var firstLoad = true
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentCryptocurrencyDetailsBinding.bind(view)
+        viewModel.init(requireContext())
         setUpRecycler()
         setUpListener()
         initObservers()
@@ -31,17 +37,15 @@ class CryptocurrencyDetailsFragment : Fragment(R.layout.fragment_cryptocurrency_
 
     private fun setData() {
         arguments?.let {
-            val book = it.getString(PARAM_BOOK) ?: ""
             binding.name.text = it.getString(PARAM_NAME) ?: ""
             val price = it.getDouble(PARAM_PRICE).toAmountFormat()
-            val currency = book.split("_").last().uppercase()
+            val currency = getBook().split("_").last().uppercase()
             binding.price.text = price.plus(" $currency").takeIf { price.isNotEmpty() }
-
-            if (book.isNotEmpty()) {
-                viewModel.getOrderBook(book)
-            }
+            loadData()
         }
     }
+
+    private fun getBook(): String = arguments?.getString(PARAM_BOOK) ?: ""
 
     private fun setUpRecycler() {
         binding.rvAsksBids.apply {
@@ -56,7 +60,7 @@ class CryptocurrencyDetailsFragment : Fragment(R.layout.fragment_cryptocurrency_
             binding.tvUpdateAt.text = it.updatedAt.toDateFormat()
             binding.tvCryptoImage.loadImage(it.urlIcon)
             val isAsk = binding.rbAsks.isChecked
-            setList(isAsk)
+            setList(isAsk = isAsk)
             activity.finishLoading()
         }
     }
@@ -64,13 +68,52 @@ class CryptocurrencyDetailsFragment : Fragment(R.layout.fragment_cryptocurrency_
     private fun setUpListener() {
         binding.rgAsksBids.setOnCheckedChangeListener { _, i ->
             val isAsk = (i == binding.rbAsks.id)
-            setList(isAsk)
+            setList(isAsk = isAsk)
         }
     }
 
-    private fun setList(isAsk: Boolean) {
+    private fun loadData() {
+        val book = getBook()
+        if (book.isNotEmpty()) {
+            viewModel.getDetails(book).observe(viewLifecycleOwner) { response ->
+                when (response) {
+                    is Response.Failure -> showErrorDialog(response.message)
+                    is Response.Success -> firstLoad = false
+                }
+            }
+        }
+    }
+
+    private fun setList(
+        isAsk: Boolean,
+        btnReloadIsVisible: Boolean = false
+    ) {
         val list = viewModel.getList(isAsk)
+        val thereAreElements = list.isEmpty()
         askAndBidsAdapter.setList(list)
+        binding.messageNotFound.btnReload.isVisible = (btnReloadIsVisible && thereAreElements)
+        binding.messageNotFound.content.isVisible = if (firstLoad) false else thereAreElements
+        binding.messageNotFound.btnReload.setOnClickListener { loadData() }
+        binding.rvAsksBids.isVisible = thereAreElements.not()
+        if (!thereAreElements) {
+            activity.finishLoading()
+        }
+    }
+
+    private fun showErrorDialog(message: String) {
+        activity.finishLoading()
+        firstLoad = false
+        val isAsk = binding.rbAsks.isChecked
+        setList(isAsk = isAsk, btnReloadIsVisible = true)
+        activity.showError(
+            textBody = message,
+            textPositiveButton = getString(R.string.label_retry),
+            onPositiveCation = { errorDialog ->
+                errorDialog.dismiss()
+                CryptoLog.Ui.success("retry load data")
+                loadData()
+            }
+        )
     }
 
     companion object {
