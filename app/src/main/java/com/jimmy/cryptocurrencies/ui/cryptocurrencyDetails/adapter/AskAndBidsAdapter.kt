@@ -12,7 +12,7 @@ class AskAndBidsAdapter : BaseRecyclerAdapter<AsksBidsValueUiModel>(DiffUtil) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int,
+        viewType: Int
     ): BaseViewHolder<AsksBidsValueUiModel> {
         val layoutInflater = LayoutInflater.from(parent.context)
         val view = layoutInflater.inflate(R.layout.item_asks_bids, parent, false)
@@ -22,13 +22,12 @@ class AskAndBidsAdapter : BaseRecyclerAdapter<AsksBidsValueUiModel>(DiffUtil) {
     object DiffUtil : BaseDiffUtilCallback<AsksBidsValueUiModel>() {
         override fun areItemsTheSame(
             oldItem: AsksBidsValueUiModel,
-            newItem: AsksBidsValueUiModel,
+            newItem: AsksBidsValueUiModel
         ): Boolean = (oldItem.name == newItem.name)
 
         override fun areContentsTheSame(
             oldItem: AsksBidsValueUiModel,
-            newItem: AsksBidsValueUiModel,
+            newItem: AsksBidsValueUiModel
         ): Boolean = (oldItem == newItem)
     }
-
 }

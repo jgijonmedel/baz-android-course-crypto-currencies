@@ -23,13 +23,13 @@ fun Activity?.showError(
 }
 
 fun Activity?.startLoading() {
-    if(this is MainActivity) {
+    if (this is MainActivity) {
         this.startLoading()
     }
 }
 
 fun Activity?.finishLoading() {
-    if(this is MainActivity) {
+    if (this is MainActivity) {
         this.finishLoading()
     }
 }

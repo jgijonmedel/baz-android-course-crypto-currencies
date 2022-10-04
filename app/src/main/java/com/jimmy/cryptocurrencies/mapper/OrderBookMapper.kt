@@ -11,7 +11,7 @@ fun OrderBookDomainModel.toUiModel(): OrderBookUiModel {
         updatedAt = updatedAt,
         sequence = sequence,
         asks = asks.toUiModel().toList(),
-        bids = bids.toUiModel().toList(),
+        bids = bids.toUiModel().toList()
     )
 }
 
@@ -22,7 +22,7 @@ private fun AsksBidsValueDomainModel.toUiModel(): AsksBidsValueUiModel {
         name = name,
         currency = currency,
         price = price.toDoubleOrNull() ?: 0.0,
-        amount = amount.toDoubleOrNull() ?: 0.0,
+        amount = amount.toDoubleOrNull() ?: 0.0
     )
 }
 

@@ -15,7 +15,7 @@ fun String.firstUpper(): String {
 }
 
 fun Double.toAmountFormat(
-    locale: Locale = Locale.getDefault(),
+    locale: Locale = Locale.getDefault()
 ): String {
     val dollarFormat = NumberFormat.getCurrencyInstance(locale)
     return dollarFormat.format(this)
@@ -23,7 +23,7 @@ fun Double.toAmountFormat(
 
 fun String.toDateFormat(
     stringDateFormat: String = "EEEE dd MMMM yyyy",
-    locale: Locale = Locale.getDefault(),
+    locale: Locale = Locale.getDefault()
 ): String {
     return try {
         val formatDate = SimpleDateFormat("yyyy-mm-dd", Locale.US)
@@ -31,7 +31,7 @@ fun String.toDateFormat(
         val date = formatDate.parse(this)
         val dateString = format.format(date)
         dateString
-    } catch(ex: Exception) {
+    } catch (ex: Exception) {
         CryptoLog.Ui.error(exception = ex, message = "Error_format_string_to_ate")
         this
     }

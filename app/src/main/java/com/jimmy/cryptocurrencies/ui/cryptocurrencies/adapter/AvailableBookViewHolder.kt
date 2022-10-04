@@ -11,13 +11,13 @@ import com.jimmy.cryptocurrencies.utils.extension.toAmountFormat
 
 class AvailableBookViewHolder(
     view: View,
-    private val onClick: (AvailableBookUiModel) -> Unit,
+    private val onClick: (AvailableBookUiModel) -> Unit
 ) : BaseViewHolder<AvailableBookUiModel>(view) {
 
     private val binding = ItemCryptocurrencyBinding.bind(view)
 
     override fun bind(
-        item: AvailableBookUiModel,
+        item: AvailableBookUiModel
     ) {
         Log.w("AvailableBookUiModel", "${item.name} (${item.maximumPrice})")
         binding.name.text = item.name.firstUpper()
