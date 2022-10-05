@@ -3,9 +3,12 @@ package com.jimmy.cryptocurrencies.ui
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.jimmy.cryptocurrencies.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 import com.jimmy.cryptocurrencies.ui.componet.ErrorDialog
 import com.jimmy.cryptocurrencies.ui.componet.LoadingDialog
 
+
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

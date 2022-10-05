@@ -1,28 +1,27 @@
 package com.jimmy.cryptocurrencies.ui.cryptocurrencies
 
-import android.content.Context
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.liveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.jimmy.cryptocurrencies.common.core.Response
+import androidx.lifecycle.liveData
+import com.jimmy.cryptocurrencies.data.core.Response
 import com.jimmy.cryptocurrencies.domain.usecase.GetAllAvailableBooks
 import com.jimmy.cryptocurrencies.mapper.toUiModel
 import com.jimmy.cryptocurrencies.model.AvailableBookUiModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 
-class CryptocurrenciesViewModel : ViewModel() {
+@HiltViewModel
+class CryptocurrenciesViewModel @Inject constructor(
+    val getAllAvailableBooks: GetAllAvailableBooks
+) : ViewModel() {
 
-    private lateinit var getAllAvailableBooks: GetAllAvailableBooks
     private val _books: MutableLiveData<List<AvailableBookUiModel>> by lazy {
         MutableLiveData(emptyList())
     }
 
     val books: LiveData<List<AvailableBookUiModel>> get() = _books
-
-    fun init(context: Context) {
-        getAllAvailableBooks = GetAllAvailableBooks(context)
-    }
 
     fun getAvailableBooks() = liveData(Dispatchers.IO) {
         val response = getAllAvailableBooks()

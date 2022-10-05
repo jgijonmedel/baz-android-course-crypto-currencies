@@ -14,10 +14,9 @@ import com.jimmy.cryptocurrencies.common.core.Response
 import com.jimmy.cryptocurrencies.common.utils.CryptoLog
 import com.jimmy.cryptocurrencies.utils.extension.toAmountFormat
 import com.jimmy.cryptocurrencies.utils.extension.toDateFormat
-import com.jimmy.cryptocurrencies.utils.extension.loadImage
-import com.jimmy.cryptocurrencies.utils.extension.finishLoading
-import com.jimmy.cryptocurrencies.utils.extension.showError
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CryptocurrencyDetailsFragment : Fragment(R.layout.fragment_cryptocurrency_details) {
 
     private lateinit var binding: FragmentCryptocurrencyDetailsBinding
@@ -28,7 +27,6 @@ class CryptocurrencyDetailsFragment : Fragment(R.layout.fragment_cryptocurrency_
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentCryptocurrencyDetailsBinding.bind(view)
-        viewModel.init(requireContext())
         setUpRecycler()
         setUpListener()
         initObservers()

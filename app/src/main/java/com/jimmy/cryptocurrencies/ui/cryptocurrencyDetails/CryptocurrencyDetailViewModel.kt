@@ -1,6 +1,7 @@
 package com.jimmy.cryptocurrencies.ui.cryptocurrencyDetails
 
-import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
@@ -11,18 +12,17 @@ import com.jimmy.cryptocurrencies.domain.usecase.GetOrderBook
 import com.jimmy.cryptocurrencies.mapper.toUiModel
 import com.jimmy.cryptocurrencies.model.AsksBidsValueUiModel
 import com.jimmy.cryptocurrencies.model.OrderBookUiModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 
-class CryptocurrencyDetailViewModel : ViewModel() {
-
-    private lateinit var getOrderBook: GetOrderBook
+@HiltViewModel
+class CryptocurrencyDetailViewModel @Inject constructor(
+    private val getOrderBook: GetOrderBook
+) : ViewModel() {
 
     private val _orderBook = MutableLiveData<OrderBookUiModel>()
     val orderBook: LiveData<OrderBookUiModel> = _orderBook
-
-    fun init(context: Context) {
-        getOrderBook = GetOrderBook(context)
-    }
 
     fun getDetails(bookSymbol: String) = liveData(Dispatchers.IO) {
         val response = getOrderBook(bookSymbol)

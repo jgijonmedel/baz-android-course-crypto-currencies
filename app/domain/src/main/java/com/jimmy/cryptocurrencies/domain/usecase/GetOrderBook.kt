@@ -5,11 +5,11 @@ import com.jimmy.cryptocurrencies.common.core.Response
 import com.jimmy.cryptocurrencies.data.repository.OrderBookRepository
 import com.jimmy.cryptocurrencies.domain.mapper.toDomainModel
 import com.jimmy.cryptocurrencies.domain.model.orderBook.OrderBookDomainModel
+import javax.inject.Inject
 
-class GetOrderBook(context: Context) {
-
-    private val repository = OrderBookRepository(context)
-
+class GetOrderBook @Inject constructor(
+    private val repository: OrderBookRepository
+) {
     suspend operator fun invoke(bookSymbol: String): Response<OrderBookDomainModel> {
         return try {
             val repositoryResponse = repository.getOrderBook(bookSymbol)
