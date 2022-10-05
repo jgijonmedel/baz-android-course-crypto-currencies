@@ -3,11 +3,9 @@ package com.jimmy.cryptocurrencies.ui.cryptocurrencyDetails
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
-import androidx.lifecycle.MutableLiveData
-import com.jimmy.cryptocurrencies.common.core.Response
-import com.jimmy.cryptocurrencies.common.utils.CryptoLog
+import com.jimmy.cryptocurrencies.data.core.Response
+import com.jimmy.cryptocurrencies.data.utils.CryptoLog
 import com.jimmy.cryptocurrencies.domain.usecase.GetOrderBook
 import com.jimmy.cryptocurrencies.mapper.toUiModel
 import com.jimmy.cryptocurrencies.model.AsksBidsValueUiModel

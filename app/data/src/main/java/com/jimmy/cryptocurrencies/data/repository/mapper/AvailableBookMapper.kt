@@ -38,7 +38,7 @@ internal fun AvailableBookNetworkModelResponse.toEntity(): AvailableBookEntity {
         minimumAmount = minimumAmount,
         maximumAmount = maximumAmount,
         minimumValue = minimumValue,
-        maximumValue = maximumValue,
+        maximumValue = maximumValue
     )
 }
 

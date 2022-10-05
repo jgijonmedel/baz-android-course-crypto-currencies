@@ -127,9 +127,9 @@
         android:orientation="horizontal"
         android:layout_marginHorizontal="@dimen/spacing_medium"
         android:paddingHorizontal="@dimen/spacing_extra_small"
-        android:layout_marginTop="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_small"
         android:paddingTop="@dimen/spacing_small"
-        android:alpha="@dimen/emphasis_low"
+        android:alpha="@dimen/emphasis_medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rg_asks_bids">
@@ -139,7 +139,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/label_book"
-            android:textAppearance="@style/text_subtitle"
+            android:textAppearance="@style/text_body"
             android:textColor="?attr/colorOnSecondary"
             tools:ignore="TextContrastCheck" />
 
@@ -150,7 +150,7 @@
             android:layout_marginHorizontal="@dimen/spacing_small"
             android:layout_weight="1"
             android:textAlignment="center"
-            android:textAppearance="@style/text_subtitle"
+            android:textAppearance="@style/text_body"
             android:textColor="?attr/colorOnSecondary"
             android:text="@string/label_amount"
             tools:ignore="TextContrastCheck" />
@@ -160,7 +160,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
             android:textAlignment="textEnd"
-            android:textAppearance="@style/text_subtitle"
+            android:textAppearance="@style/text_body"
             android:textColor="?attr/colorOnSecondary"
             android:text="@string/label_price"
             tools:ignore="TextContrastCheck" />

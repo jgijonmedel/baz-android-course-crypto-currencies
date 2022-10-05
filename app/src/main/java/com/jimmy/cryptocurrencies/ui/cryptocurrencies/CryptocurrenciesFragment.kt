@@ -1,7 +1,6 @@
 package com.jimmy.cryptocurrencies.ui.cryptocurrencies
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
@@ -12,8 +11,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jimmy.cryptocurrencies.R
-import com.jimmy.cryptocurrencies.common.core.Response
-import com.jimmy.cryptocurrencies.common.utils.CryptoLog
+import com.jimmy.cryptocurrencies.data.core.Response
+import com.jimmy.cryptocurrencies.data.utils.CryptoLog
 import com.jimmy.cryptocurrencies.databinding.FragmentCryptocurrenciesBinding
 import com.jimmy.cryptocurrencies.model.AvailableBookUiModel
 import com.jimmy.cryptocurrencies.ui.cryptocurrencies.adapter.CryptocurrencyAdapter

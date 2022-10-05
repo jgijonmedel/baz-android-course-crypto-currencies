@@ -14,13 +14,14 @@
         android:orientation="vertical"
         android:layout_marginHorizontal="@dimen/spacing_extra_small"
         android:paddingHorizontal="@dimen/spacing_medium"
-        android:paddingTop="@dimen/spacing_medium">
+        android:paddingTop="@dimen/spacing_small">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:gravity="center_vertical"
+            android:paddingTop="@dimen/spacing_extra_small">
 
            <androidx.appcompat.widget.LinearLayoutCompat
                android:layout_width="0dp"

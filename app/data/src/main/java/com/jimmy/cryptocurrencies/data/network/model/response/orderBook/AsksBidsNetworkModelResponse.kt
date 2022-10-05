@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 data class AsksBidsNetworkModelResponse(
     @SerializedName("book") val book: String,
     @SerializedName("price") val price: String,
-    @SerializedName("amount") val amount: String,
+    @SerializedName("amount") val amount: String
 )

@@ -7,11 +7,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.jimmy.cryptocurrencies.R
+import com.jimmy.cryptocurrencies.data.core.Response
+import com.jimmy.cryptocurrencies.data.utils.CryptoLog
 import com.jimmy.cryptocurrencies.databinding.FragmentCryptocurrencyDetailsBinding
 import com.jimmy.cryptocurrencies.ui.cryptocurrencyDetails.adapter.AskAndBidsAdapter
-import com.jimmy.cryptocurrencies.R
-import com.jimmy.cryptocurrencies.common.core.Response
-import com.jimmy.cryptocurrencies.common.utils.CryptoLog
+import com.jimmy.cryptocurrencies.utils.extension.finishLoading
+import com.jimmy.cryptocurrencies.utils.extension.loadImage
+import com.jimmy.cryptocurrencies.utils.extension.showError
 import com.jimmy.cryptocurrencies.utils.extension.toAmountFormat
 import com.jimmy.cryptocurrencies.utils.extension.toDateFormat
 import dagger.hilt.android.AndroidEntryPoint
