@@ -17,4 +17,6 @@
     <string name="label_retry">Reintentar</string>
     <string name="message_not_load_data">No se encontro el contennido</string>
     <string name="label_reload">Volver a cargar</string>
+    <string name="connection_on">Estas conectado a internet.</string>
+    <string name="connection_off">No tienes conexión a internet.</string>
 </resources>

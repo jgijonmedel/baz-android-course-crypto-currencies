@@ -2,7 +2,7 @@ package com.jimmy.cryptocurrencies.utils.extension
 
 import android.icu.text.NumberFormat
 import android.icu.text.SimpleDateFormat
-import com.jimmy.cryptocurrencies.common.utils.CryptoLog
+import com.jimmy.cryptocurrencies.data.utils.CryptoLog
 import java.util.Locale
 
 fun String.firstUpper(): String {
