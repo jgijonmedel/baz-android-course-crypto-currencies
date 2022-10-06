@@ -11,8 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/spacing_medium"
-        android:layout_marginBottom="@dimen/spacing_medium"
         android:layout_marginTop="@dimen/spacing_small"
+        android:layout_marginBottom="@dimen/spacing_medium"
         android:clickable="false"
         app:cardBackgroundColor="?attr/colorSurface"
         app:cardCornerRadius="@dimen/spacing_medium"
@@ -23,7 +23,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_small"
@@ -31,59 +31,156 @@
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/tv_crypto_image"
-                android:layout_width="@dimen/size_image_cryptocurrency"
-                android:layout_height="@dimen/size_image_cryptocurrency"
+                android:id="@+id/iv_crypto_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:src="@drawable/view_circle_separator"
+                app:layout_constraintBottom_toBottomOf="@+id/volume"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
                 tools:ignore="ImageContrastCheck" />
 
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="wrap_content"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/name"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:textAppearance="@style/text_title"
                 android:layout_marginStart="@dimen/spacing_medium"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_small"
-                    android:textAppearance="@style/text_title"
-                    tools:ignore="TextContrastCheck"
-                    tools:text="Bitcoin" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_crypto_image"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TextContrastCheck"
+                tools:text="Bitcoin" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/price"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/text_subtitle"
                     android:textColor="?attr/colorPrimaryVariant"
                     tools:ignore="TextContrastCheck"
-                    tools:text="$12,123,123.98 MXN" />
+                    tools:text="$12,123,123.98 MXN"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/name"
+                    app:layout_constraintTop_toBottomOf="@id/name" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_small"
-                    android:text="@string/label_last_update"
-                    android:textAppearance="@style/text_body"
-                    android:textColor="?attr/colorOnSecondary"
-                    android:alpha="@dimen/emphasis_medium"
-                    tools:ignore="TextContrastCheck" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_update_at"
-                    android:layout_width="match_parent"
+                    android:id="@+id/volume"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/text_body"
                     tools:ignore="TextContrastCheck"
-                    tools:text="12/12/2022" />
+                    tools:text="123344556"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/price"
+                    app:layout_constraintTop_toBottomOf="@id/price" />
 
-            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/label_ask"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/text_body"
+                app:layout_constraintEnd_toStartOf="@id/ask"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_crypto_image"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:alpha="@dimen/emphasis_medium"
+                android:text="@string/label_ask" />
 
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/ask"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:textAppearance="@style/text_body"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/label_ask"
+                app:layout_constraintTop_toTopOf="@+id/label_ask"
+                tools:text="234.31349615" />
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/label_bid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/text_body"
+                app:layout_constraintEnd_toStartOf="@id/bid"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/label_ask"
+                android:text="@string/label_bid"
+                android:alpha="@dimen/emphasis_medium" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/bid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:textAppearance="@style/text_body"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/label_bid"
+                app:layout_constraintTop_toTopOf="@+id/label_bid"
+                tools:text="22.31349615" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/label_high"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/text_body"
+                app:layout_constraintEnd_toStartOf="@id/high"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_bid"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:alpha="@dimen/emphasis_medium"
+                android:text="@string/label_high" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/high"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:textAppearance="@style/text_body"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/label_high"
+                app:layout_constraintTop_toTopOf="@+id/label_high"
+                tools:text="22.31349615" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/label_low"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/text_body"
+                app:layout_constraintEnd_toStartOf="@id/low"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/label_high"
+                android:text="@string/label_low"
+                android:alpha="@dimen/emphasis_medium" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/low"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:textAppearance="@style/text_body"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/label_low"
+                app:layout_constraintTop_toTopOf="@+id/label_low"
+                tools:text="22.31349615" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_update_at"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:alpha="@dimen/emphasis_medium"
+                android:textAppearance="@style/text_body"
+                android:textColor="?attr/colorOnSecondary"
+                android:layout_marginTop="@dimen/spacing_small"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/label_low"
+                tools:ignore="TextContrastCheck"
+                tools:text="@string/label_last_update" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 
@@ -92,11 +189,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/spacing_medium"
-        android:layout_marginTop="@dimen/spacing_long"
+        android:layout_marginTop="@dimen/spacing_medium"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header">
+        app:layout_constraintTop_toBottomOf="@+id/header">
 
         <androidx.appcompat.widget.AppCompatRadioButton
             android:id="@+id/rb_asks"
@@ -123,13 +220,13 @@
         android:id="@+id/header_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:alpha="@dimen/emphasis_medium"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:layout_marginHorizontal="@dimen/spacing_medium"
         android:paddingHorizontal="@dimen/spacing_extra_small"
-        android:layout_marginTop="@dimen/spacing_small"
         android:paddingTop="@dimen/spacing_small"
-        android:alpha="@dimen/emphasis_medium"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rg_asks_bids">
@@ -149,20 +246,20 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_small"
             android:layout_weight="1"
+            android:text="@string/label_amount"
             android:textAlignment="center"
             android:textAppearance="@style/text_body"
             android:textColor="?attr/colorOnSecondary"
-            android:text="@string/label_amount"
             tools:ignore="TextContrastCheck" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1.5"
+            android:text="@string/label_price"
             android:textAlignment="textEnd"
             android:textAppearance="@style/text_body"
             android:textColor="?attr/colorOnSecondary"
-            android:text="@string/label_price"
             tools:ignore="TextContrastCheck" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
@@ -171,11 +268,11 @@
         android:id="@+id/header_list_divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="?attr/colorOnSecondary"
-        android:alpha="@dimen/emphasis_low"
-        app:layout_constraintTop_toBottomOf="@id/header_list"
+        android:layout_marginHorizontal="@dimen/spacing_medium"
         android:layout_marginTop="@dimen/spacing_small"
-        android:layout_marginHorizontal="@dimen/spacing_medium"/>
+        android:alpha="@dimen/emphasis_low"
+        android:background="?attr/colorOnSecondary"
+        app:layout_constraintTop_toBottomOf="@id/header_list" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_asks_bids"
@@ -190,14 +287,14 @@
 
     <include
         android:id="@+id/message_not_found"
+        layout="@layout/view_not_found"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        layout="@layout/view_not_found"
         android:layout_marginTop="@dimen/spacing_medium"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header_list_divider"
-        android:visibility="gone"/>
+        app:layout_constraintTop_toBottomOf="@id/header_list_divider" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

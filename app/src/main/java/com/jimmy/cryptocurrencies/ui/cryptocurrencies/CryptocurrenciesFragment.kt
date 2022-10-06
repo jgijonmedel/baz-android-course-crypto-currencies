@@ -115,7 +115,6 @@ class CryptocurrenciesFragment : Fragment(R.layout.fragment_cryptocurrencies) {
             bundleOf(
                 CryptocurrencyDetailsFragment.PARAM_BOOK to "${book.symbol}_${book.currency}",
                 CryptocurrencyDetailsFragment.PARAM_NAME to book.name,
-                CryptocurrencyDetailsFragment.PARAM_PRICE to book.maximumPrice
             )
         )
     }

@@ -3,7 +3,7 @@
     <string name="toolbar_title">rypto</string>
     <string name="count_list">(%d)</string>
     <string name="label_result">Resultado</string>
-    <string name="label_last_update">Última actualización:</string>
+    <string name="label_last_update">Última actualización: %s</string>
     <string name="label_asks">Oferta</string>
     <string name="label_bids">Demanda</string>
     <string name="label_book">Libro</string>
@@ -19,4 +19,13 @@
     <string name="label_reload">Volver a cargar</string>
     <string name="connection_on">Estas conectado a internet.</string>
     <string name="connection_off">No tienes conexión a internet.</string>
+
+    <string name="label_volume">Volumen: %s</string>
+    <string name="label_price_with_currency">Precio: %s %s</string>
+    <string name="label_high">Precio más alto en las ultimas 24 hrs:</string>
+    <string name="label_low">Precio más bajo en las ultimas 24 hrs:</string>
+    <string name="label_ask">Venta más baja:</string>
+    <string name="label_bid">Compra más alta:</string>
+    <string name="last_24_hrs_prices">Precios las últimas 24 horas (en %s):</string>
+    <string name="label_buys">Precios (en %s):</string>
 </resources>

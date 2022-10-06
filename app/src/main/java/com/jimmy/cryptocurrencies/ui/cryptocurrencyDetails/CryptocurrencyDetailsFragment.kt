@@ -39,9 +39,6 @@ class CryptocurrencyDetailsFragment : Fragment(R.layout.fragment_cryptocurrency_
     private fun setData() {
         arguments?.let {
             binding.name.text = it.getString(PARAM_NAME) ?: ""
-            val price = it.getDouble(PARAM_PRICE).toAmountFormat()
-            val currency = getBook().split("_").last().uppercase()
-            binding.price.text = price.plus(" $currency").takeIf { price.isNotEmpty() }
             loadData()
         }
     }
@@ -57,9 +54,16 @@ class CryptocurrencyDetailsFragment : Fragment(R.layout.fragment_cryptocurrency_
     }
 
     private fun initObservers() {
-        viewModel.orderBook.observe(viewLifecycleOwner) {
-            binding.tvUpdateAt.text = it.updatedAt.toDateFormat()
-            binding.tvCryptoImage.loadImage(it.urlIcon)
+        viewModel.details.observe(viewLifecycleOwner) {
+            val currency = getBook().split("_").last().uppercase()
+            binding.ivCryptoImage.loadImage(it.urlIcon)
+            binding.price.text = getString(R.string.label_price_with_currency, it.last.toAmountFormat(), currency)
+            binding.tvUpdateAt.text = getString(R.string.label_last_update, it.updatedAt.toDateFormat())
+            binding.volume.text = getString(R.string.label_volume, it.volume)
+            binding.high.text = it.high.toAmountFormat().plus(" $currency")
+            binding.low.text = it.low.toAmountFormat().plus(" $currency")
+            binding.ask.text = it.ask.toAmountFormat().plus(" $currency")
+            binding.bid.text = it.bid.toAmountFormat().plus(" $currency")
             val isAsk = binding.rbAsks.isChecked
             setList(isAsk = isAsk)
             activity.finishLoading()
@@ -120,6 +124,5 @@ class CryptocurrencyDetailsFragment : Fragment(R.layout.fragment_cryptocurrency_
     companion object {
         const val PARAM_BOOK = "param_cryptocurrency_book"
         const val PARAM_NAME = "param_cryptocurrency_name"
-        const val PARAM_PRICE = "param_cryptocurrency_price"
     }
 }

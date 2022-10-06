@@ -19,5 +19,7 @@ interface CryptoCurrencyApiServices {
     ): BaseResponseModel<OrderBookNetworkModelResponse>
 
     @GET(CryptoCurrenciesApiPaths.PATH_TICKER)
-    suspend fun getTicker(): BaseResponseModel<TickerResponseModel>
+    suspend fun getTicker(
+        @Query("book") book: String
+    ): BaseResponseModel<TickerResponseModel>
 }

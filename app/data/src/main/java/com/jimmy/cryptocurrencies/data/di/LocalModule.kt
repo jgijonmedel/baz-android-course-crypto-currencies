@@ -33,4 +33,8 @@ internal object LocalModule {
     @Singleton
     @Provides
     internal fun getAsksBidsDao(db: CryptocurrencyDataBase) = db.getAsksBidsDao()
+
+    @Singleton
+    @Provides
+    internal fun getTickerDao(db: CryptocurrencyDataBase) = db.getTickerDao()
 }
