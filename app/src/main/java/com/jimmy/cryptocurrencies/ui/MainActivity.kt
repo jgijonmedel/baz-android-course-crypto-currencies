@@ -2,10 +2,14 @@ package com.jimmy.cryptocurrencies.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import com.jimmy.cryptocurrencies.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 import com.jimmy.cryptocurrencies.ui.componet.ErrorDialog
 import com.jimmy.cryptocurrencies.ui.componet.LoadingDialog
+import com.jimmy.cryptocurrencies.utils.ConnectionReceiver
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -17,6 +21,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root.rootView)
+        ConnectionReceiver(this).observe(this) { isConnected ->
+            binding.messageNetwork.content.isVisible = isConnected.not()
+        }
     }
 
     fun showErrorDialog(

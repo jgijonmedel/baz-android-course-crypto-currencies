@@ -1,15 +1,15 @@
 package com.jimmy.cryptocurrencies.data.local.dao
 
-import androidx.room.OnConflictStrategy
 import androidx.room.Dao
-import androidx.room.Transaction
-import androidx.room.Query
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Transaction
 import com.jimmy.cryptocurrencies.data.local.entity.OrderBookEntity
 import com.jimmy.cryptocurrencies.data.local.entity.RelationOrderBookWithAskBids
 
 @Dao
-internal interface OrderBookDao {
+interface OrderBookDao {
 
     @Transaction
     @Query("SELECT * FROM order_book_table WHERE name = :name")

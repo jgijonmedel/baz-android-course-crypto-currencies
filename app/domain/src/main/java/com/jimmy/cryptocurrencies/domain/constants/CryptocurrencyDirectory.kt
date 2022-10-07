@@ -122,7 +122,7 @@ enum class CryptocurrencyDirectory(val fullName: String) {
     BTT(fullName = "BitTorrent (New)");
 
     companion object {
-        fun getName(book: String): String{
+        fun getName(book: String): String {
             return try {
                 valueOf(book).fullName
             } catch (ex: IllegalArgumentException) {

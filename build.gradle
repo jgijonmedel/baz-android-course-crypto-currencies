@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        ext.hilt_version = "2.41"
+        ext.hilt_version = "2.43.2"
     }
     dependencies {
         def nav_version = "2.4.1"

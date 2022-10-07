@@ -7,7 +7,7 @@ import androidx.room.Query
 import com.jimmy.cryptocurrencies.data.local.entity.AvailableBookEntity
 
 @Dao
-internal interface AvailableBookDao {
+interface AvailableBookDao {
 
     @Query("SELECT * FROM available_book_table ORDER BY id DESC")
     suspend fun getAll(): List<AvailableBookEntity>

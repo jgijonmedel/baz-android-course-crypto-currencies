@@ -5,5 +5,5 @@ data class OrderBookDomainModel(
     val updatedAt: String,
     val sequence: String,
     val asks: List<AsksBidsValueDomainModel>,
-    val bids: List<AsksBidsValueDomainModel>,
+    val bids: List<AsksBidsValueDomainModel>
 )

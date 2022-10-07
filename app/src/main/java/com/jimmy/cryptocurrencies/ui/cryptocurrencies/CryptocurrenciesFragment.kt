@@ -1,18 +1,18 @@
 package com.jimmy.cryptocurrencies.ui.cryptocurrencies
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jimmy.cryptocurrencies.R
-import com.jimmy.cryptocurrencies.common.core.Response
-import com.jimmy.cryptocurrencies.common.utils.CryptoLog
+import com.jimmy.cryptocurrencies.data.core.Response
+import com.jimmy.cryptocurrencies.data.utils.CryptoLog
 import com.jimmy.cryptocurrencies.databinding.FragmentCryptocurrenciesBinding
 import com.jimmy.cryptocurrencies.model.AvailableBookUiModel
 import com.jimmy.cryptocurrencies.ui.cryptocurrencies.adapter.CryptocurrencyAdapter
@@ -20,7 +20,9 @@ import com.jimmy.cryptocurrencies.ui.cryptocurrencyDetails.CryptocurrencyDetails
 import com.jimmy.cryptocurrencies.utils.extension.finishLoading
 import com.jimmy.cryptocurrencies.utils.extension.showError
 import com.jimmy.cryptocurrencies.utils.extension.startLoading
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CryptocurrenciesFragment : Fragment(R.layout.fragment_cryptocurrencies) {
 
     private lateinit var binding: FragmentCryptocurrenciesBinding
@@ -31,7 +33,6 @@ class CryptocurrenciesFragment : Fragment(R.layout.fragment_cryptocurrencies) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentCryptocurrenciesBinding.bind(view)
-        viewModel.init(binding.root.context)
         setUpRecycler()
         initObservers()
         setUpListeners()
@@ -114,7 +115,6 @@ class CryptocurrenciesFragment : Fragment(R.layout.fragment_cryptocurrencies) {
             bundleOf(
                 CryptocurrencyDetailsFragment.PARAM_BOOK to "${book.symbol}_${book.currency}",
                 CryptocurrencyDetailsFragment.PARAM_NAME to book.name,
-                CryptocurrencyDetailsFragment.PARAM_PRICE to book.maximumPrice
             )
         )
     }

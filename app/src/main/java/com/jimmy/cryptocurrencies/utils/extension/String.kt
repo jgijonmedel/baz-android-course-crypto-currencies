@@ -2,7 +2,7 @@ package com.jimmy.cryptocurrencies.utils.extension
 
 import android.icu.text.NumberFormat
 import android.icu.text.SimpleDateFormat
-import com.jimmy.cryptocurrencies.common.utils.CryptoLog
+import com.jimmy.cryptocurrencies.data.utils.CryptoLog
 import java.util.Locale
 
 fun String.firstUpper(): String {
@@ -21,6 +21,14 @@ fun Double.toAmountFormat(
     return dollarFormat.format(this)
 }
 
+fun String.toAmountFormat(
+    locale: Locale = Locale.getDefault()
+): String {
+    val price = this.toDoubleOrNull() ?: 0.0
+    val dollarFormat = NumberFormat.getCurrencyInstance(locale)
+    return dollarFormat.format(price)
+}
+
 fun String.toDateFormat(
     stringDateFormat: String = "EEEE dd MMMM yyyy",
     locale: Locale = Locale.getDefault()
@@ -30,7 +38,7 @@ fun String.toDateFormat(
         val format = SimpleDateFormat(stringDateFormat, locale)
         val date = formatDate.parse(this)
         val dateString = format.format(date)
-        dateString
+        dateString.firstUpper()
     } catch (ex: Exception) {
         CryptoLog.Ui.error(exception = ex, message = "Error_format_string_to_ate")
         this

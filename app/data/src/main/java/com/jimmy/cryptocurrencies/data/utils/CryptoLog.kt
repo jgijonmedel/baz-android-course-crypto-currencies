@@ -1,4 +1,4 @@
-package com.jimmy.cryptocurrencies.common.utils
+package com.jimmy.cryptocurrencies.data.utils
 
 import android.util.Log
 

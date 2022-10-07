@@ -1,28 +1,28 @@
 package com.jimmy.cryptocurrencies.data.repository
 
-import android.content.Context
-import com.jimmy.cryptocurrencies.common.utils.CryptoLog
-import com.jimmy.cryptocurrencies.data.local.database.CryptocurrencyDataBase
+import com.jimmy.cryptocurrencies.data.local.dao.AskBidsDao
+import com.jimmy.cryptocurrencies.data.local.dao.OrderBookDao
 import com.jimmy.cryptocurrencies.data.local.entity.AsksBidsEntity
 import com.jimmy.cryptocurrencies.data.local.entity.OrderBookEntity
 import com.jimmy.cryptocurrencies.data.local.entity.RelationOrderBookWithAskBids
 import com.jimmy.cryptocurrencies.data.network.api.CryptoCurrencyApiServices
-import com.jimmy.cryptocurrencies.data.network.api.RetrofitClient
 import com.jimmy.cryptocurrencies.data.network.model.response.orderBook.OrderBookNetworkModelResponse
 import com.jimmy.cryptocurrencies.data.repository.mapper.toDataModel
 import com.jimmy.cryptocurrencies.data.repository.mapper.toEntities
 import com.jimmy.cryptocurrencies.data.repository.mapper.toEntity
 import com.jimmy.cryptocurrencies.data.repository.model.AskBidsType
 import com.jimmy.cryptocurrencies.data.repository.model.OrderBookDataModel
+import com.jimmy.cryptocurrencies.data.utils.CryptoLog
+import javax.inject.Inject
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlin.math.absoluteValue
 
-class OrderBookRepository(context: Context) {
-
-    private val api: CryptoCurrencyApiServices = RetrofitClient.getApiService()
-    private val local: CryptocurrencyDataBase = CryptocurrencyDataBase.getDatabase(context)
-
+class OrderBookRepository @Inject constructor(
+    private val api: CryptoCurrencyApiServices,
+    private val orderBookDao: OrderBookDao,
+    private val askBidsDao: AskBidsDao
+) {
     suspend fun getOrderBook(bookSymbol: String): OrderBookDataModel {
         return try {
             val responseNetwork = getFromNetwork(bookSymbol)
@@ -54,20 +54,13 @@ class OrderBookRepository(context: Context) {
     }
 
     private suspend fun getOrderBookFromLocal(name: String): RelationOrderBookWithAskBids {
-        val dao = local.getOrderBookDao()
         CryptoLog.Data.success("get from local")
-        return dao.getByName(name)
+        return orderBookDao.getByName(name)
     }
 
     private suspend fun insertOrderBookToLocal(book: OrderBookEntity): Long {
-        val dao = local.getOrderBookDao()
-        deleteOrderBookToLocal(book.name)
-        return dao.insert(book)
-    }
-
-    private suspend fun deleteOrderBookToLocal(name: String) {
-        val dao = local.getOrderBookDao()
-        dao.delete(name)
+        orderBookDao.delete(book.name)
+        return orderBookDao.insert(book)
     }
 
     private suspend fun insertAskBidsToLocal(
@@ -75,16 +68,14 @@ class OrderBookRepository(context: Context) {
         book: String,
         OrderBookId: String
     ) {
-        val dao = local.getAsksBidsDao()
         deleteAskBidsToLocal(book, OrderBookId)
-        dao.insertAll(askAndBids)
+        askBidsDao.insertAll(askAndBids)
     }
 
     private suspend fun deleteAskBidsToLocal(
         book: String,
         OrderBookId: String
     ) {
-        val dao = local.getAsksBidsDao()
-        dao.deleteAll(book, OrderBookId)
+        askBidsDao.deleteAll(book, OrderBookId)
     }
 }

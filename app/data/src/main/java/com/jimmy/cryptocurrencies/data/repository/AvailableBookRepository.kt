@@ -1,20 +1,19 @@
 package com.jimmy.cryptocurrencies.data.repository
 
-import android.content.Context
-import com.jimmy.cryptocurrencies.common.utils.CryptoLog
-import com.jimmy.cryptocurrencies.data.local.database.CryptocurrencyDataBase
+import com.jimmy.cryptocurrencies.data.local.dao.AvailableBookDao
 import com.jimmy.cryptocurrencies.data.local.entity.AvailableBookEntity
 import com.jimmy.cryptocurrencies.data.network.api.CryptoCurrencyApiServices
-import com.jimmy.cryptocurrencies.data.network.api.RetrofitClient
 import com.jimmy.cryptocurrencies.data.network.model.response.availableBooks.AvailableBookNetworkModelResponse
 import com.jimmy.cryptocurrencies.data.repository.mapper.toDataModels
 import com.jimmy.cryptocurrencies.data.repository.mapper.toEntities
 import com.jimmy.cryptocurrencies.data.repository.model.AvailableBookDataModel
+import com.jimmy.cryptocurrencies.data.utils.CryptoLog
+import javax.inject.Inject
 
-class AvailableBookRepository(context: Context) {
-
-    private val api: CryptoCurrencyApiServices = RetrofitClient.getApiService()
-    private val local: CryptocurrencyDataBase = CryptocurrencyDataBase.getDatabase(context)
+class AvailableBookRepository @Inject constructor(
+    private val api: CryptoCurrencyApiServices,
+    private val dao: AvailableBookDao
+) {
 
     suspend fun getAll(): List<AvailableBookDataModel> {
         return try {
@@ -28,6 +27,7 @@ class AvailableBookRepository(context: Context) {
         } catch (ex: Exception) {
             CryptoLog.Data.error(exception = ex)
             val responseLocal = getAllFromLocal()
+            CryptoLog.Data.success("get from local")
             responseLocal.toDataModels()
         }
     }
@@ -38,14 +38,11 @@ class AvailableBookRepository(context: Context) {
     }
 
     private suspend fun getAllFromLocal(): List<AvailableBookEntity> {
-        val dao = local.getAvailableBookDao()
-        CryptoLog.Data.success("get from local")
         return dao.getAll()
     }
 
     private suspend fun insertAllToLocal(books: List<AvailableBookEntity>) {
         try {
-            val dao = local.getAvailableBookDao()
             deleteAllToLocal()
             return dao.insertAll(books)
         } catch (ex: Exception) {
@@ -54,7 +51,6 @@ class AvailableBookRepository(context: Context) {
     }
 
     private suspend fun deleteAllToLocal() {
-        val dao = local.getAvailableBookDao()
         return dao.deleteAll()
     }
 }
